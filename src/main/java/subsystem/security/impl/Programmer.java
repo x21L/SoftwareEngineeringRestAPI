@@ -6,7 +6,7 @@ import java.util.List;
 import subsystem.security.model.Address;
 import subsystem.security.model.Person;
 
-public class Programmer<S extends Object> extends Person {
+public class Programmer<S> extends Person {
 	private final List<S> subsystems;
 
 	public Programmer(String firstname, String lastname, Address address) {

@@ -7,7 +7,7 @@ import subsystem.security.impl.OnSideTechnician;
 
 public abstract class SecuritySystem {
 
-	private String version;
+	private String version = "0.1 alpha";
 	private final Backup backup;
 	private final List<Person> technicians;
 	protected long startScan, stopScan;
@@ -15,6 +15,7 @@ public abstract class SecuritySystem {
 	public SecuritySystem() {
 		technicians = new ArrayList<>();
 		backup = new Backup();
+		setUp();
 	}
 
 	public String getVersion() {
@@ -41,7 +42,7 @@ public abstract class SecuritySystem {
 		return "some nice stats" + backup.getStatistics();
 	}
 		
-	public boolean addTechnician(OnSideTechnician<Object> t) {
+	public boolean addTechnician(OnSideTechnician<?> t) {
 		if (t == null) {
 			throw new NullPointerException("The technician must not be null;");
 		}
@@ -55,4 +56,16 @@ public abstract class SecuritySystem {
 	public abstract void startDetection();
 	
 	public abstract long stopDetection();
+	
+	/*
+	 * simple setup for the demo
+	 */
+	private void setUp() {
+		Person karl = new OnSideTechnician<Object>("Karl", "Heinz", new Address("a", "b1", 1, "aa"));
+		Person alf = new OnSideTechnician<Object>("Alf", "Tenner", new Address("Home planet", "1", Integer.MAX_VALUE, "Melmark"));
+		Person susan = new OnSideTechnician<Object>("Susan", "Smith", new Address("S Sunset Ave", "A1", 88202, "Roswell"));
+		technicians.add(karl);
+		technicians.add(alf);
+		technicians.add(susan);
+	}
 }

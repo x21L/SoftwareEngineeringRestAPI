@@ -29,7 +29,7 @@ public class PersonServlet extends HttpServlet {
 	 */
 	public PersonServlet() {
 		super();
-		p = new Programmer("Karl", "Heinz", new Address("a", "b1", "aa"));
+		p = new Programmer("Karl", "Heinz", new Address("a", "b1", 1, "aa"));
 		gson = new Gson();
 	}
 

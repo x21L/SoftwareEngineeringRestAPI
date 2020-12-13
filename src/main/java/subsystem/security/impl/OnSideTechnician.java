@@ -3,7 +3,7 @@ package subsystem.security.impl;
 import subsystem.security.model.Address;
 import subsystem.security.model.Person;
 
-public class OnSideTechnician<S extends Object> extends Person {
+public class OnSideTechnician<S> extends Person {
 
 	public OnSideTechnician(String firstname, String lastname, Address address) {
 		super(firstname, lastname, address);
