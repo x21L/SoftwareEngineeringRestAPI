@@ -53,9 +53,9 @@ public abstract class SecuritySystem {
 		return technicians;
 	}
 	
-	public abstract void startDetection();
+	public abstract String startDetection();
 	
-	public abstract long stopDetection();
+	public abstract String stopDetection();
 	
 	/*
 	 * simple setup for the demo

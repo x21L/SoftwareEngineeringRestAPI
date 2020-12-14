@@ -37,14 +37,20 @@ public class SecurityApi extends HttpServlet {
 		String action = request.getParameter("action");
 
 		switch (action) {
-		case "person":
-			getPerson(response);
+		case "technicians":
+			getPersons(response);
 			break;
 		case "changemode":
 			changeMode(response);
 			break;
 		case "getstatus":
 			getStatus(response);
+			break;
+		case "start":
+			startScan(response);
+			break;
+		case "stop":
+			stopScan(response);
 			break;
 		default:
 			wrongInput(action, response);
@@ -60,24 +66,24 @@ public class SecurityApi extends HttpServlet {
 		respondSecuritySystem(response, SecurityScan.getInstance().getInformation());
 	}
 
+	private void getPersons(HttpServletResponse response) {
+		respondSecuritySystem(response, SecurityScan.getInstance().getTechnicians());
+	}
+
+	private void startScan(HttpServletResponse response) {
+		respondSecuritySystem(response, SecurityScan.getInstance().startDetection());
+	}
+	
+	private void stopScan(HttpServletResponse response) {
+		respondSecuritySystem(response, SecurityScan.getInstance().stopDetection());
+	}
+	
 	private void respondSecuritySystem(HttpServletResponse response, Object obj) {
 		try {
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			out.print(gson.toJson(obj));
-			out.flush();
-		} catch (IOException e) {
-			writePrintError(e.getMessage());
-		}
-	}
-
-	private void getPerson(HttpServletResponse response) {
-		try {
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			out.print(gson.toJson(new Programmer("Karl", "Heinz", new Address("a", "b1", 1, "aa"))));
 			out.flush();
 		} catch (IOException e) {
 			writePrintError(e.getMessage());

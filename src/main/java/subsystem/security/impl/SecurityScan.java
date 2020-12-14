@@ -22,16 +22,16 @@ public class SecurityScan extends SecuritySystem {
 	}
 
 	@Override
-	public void startDetection() {
+	public String startDetection() {
 		startScan = System.nanoTime();
-		System.out.println("Some nice scanning");
+		return "Some nice scanning";
 
 	}
 
 	@Override
-	public long stopDetection() {
+	public String stopDetection() {
 		stopScan = System.nanoTime();
-		return getScanDuration();
+		return "Scan stoped it took " + (getScanDuration() * 0.001) + " s";
 
 	}
 
@@ -69,6 +69,5 @@ public class SecurityScan extends SecuritySystem {
 			this.statistics = statistics;
 			this.version = version;
 		}
-
 	}
 }
