@@ -3,7 +3,7 @@ package subsystem.security.model;
 import java.util.UUID;
 
 /**
- * 
+ * Basic class for simple persons
  * @author Lukas Wais
  *
  */
@@ -13,7 +13,7 @@ public abstract class Person {
 	private final String ID;
 	private final Address address;
 	
-	public Person(String firstname, String lastname, Address address) {
+	protected Person(String firstname, String lastname, Address address) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		ID = UUID.randomUUID().toString();

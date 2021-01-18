@@ -1,5 +1,9 @@
 package subsystem.security.model;
-
+/**
+ * Backup api for the backup hardware
+ * @author Lukas Wais
+ *
+ */
 public class Backup {
 	
 	public void startBackup() {

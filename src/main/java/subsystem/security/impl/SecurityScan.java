@@ -6,6 +6,11 @@ import java.util.List;
 import subsystem.security.model.Person;
 import subsystem.security.model.SecuritySystem;
 
+/**
+ * Security scan of the system. Singleton pattern.
+ * @author Lukas Wais
+ *
+ */
 public class SecurityScan extends SecuritySystem {
 
 	private final LocalDateTime startTime;
@@ -17,10 +22,17 @@ public class SecurityScan extends SecuritySystem {
 		checkForShutdown();
 	}
 
+	/**
+	 * 
+	 * @return an instance of the scan
+	 */
 	public static SecurityScan getInstance() {
 		return instance;
 	}
 
+	/**
+	 * starts the detection
+	 */
 	@Override
 	public String startDetection() {
 		startScan = System.nanoTime();
@@ -28,6 +40,11 @@ public class SecurityScan extends SecuritySystem {
 
 	}
 
+	/**
+	 * stops the scan
+	 * 
+	 * @return scan duration in seconds
+	 */
 	@Override
 	public String stopDetection() {
 		stopScan = System.nanoTime();
@@ -55,7 +72,7 @@ public class SecurityScan extends SecuritySystem {
 		});
 	}
 
-	private final class SecurityInformation {
+	public final class SecurityInformation {
 		private final String mode;
 		private final String status;
 		private final List<Person> technicians;
@@ -68,6 +85,12 @@ public class SecurityScan extends SecuritySystem {
 			this.technicians = technicians;
 			this.statistics = statistics;
 			this.version = version;
+		}
+
+		@Override
+		public String toString() {
+			return "SecurityInformation [mode=" + mode + ", status=" + status + ", technicians=" + technicians
+					+ ", statistics=" + statistics + ", version=" + version + "]";
 		}
 	}
 }

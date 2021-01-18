@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import subsystem.security.impl.OnSideTechnician;
-
+/**
+ * Base class for the security scan
+ * @author Lukas Wais
+ *
+ */
 public abstract class SecuritySystem {
 
 	private String version = "0.1 alpha";

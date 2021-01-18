@@ -1,5 +1,9 @@
 package subsystem.security.model;
-
+/**
+ * basic address for the persons
+ * @author Lukas Wais
+ *
+ */
 public class Address {
 	private final String street;
 	private final String housenumber;
